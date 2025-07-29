@@ -51,10 +51,20 @@ class Teacher : public baseEntity{
  private:
       
        double salary;
+       int studentId[5];
       
  public:
        
-  
+    void setStudentId(int arr[5])
+    {
+          for(int i=0;i<5;i++)
+          {
+             studentId[i]=arr[i];
+          }
+    }
+    int* getStudentId(){
+       return  studentId;
+    }
     void setSalary(double s) {
         salary = s;
     }
