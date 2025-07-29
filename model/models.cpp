@@ -1,12 +1,32 @@
 #include<iostream>
 #include<string>
 using namespace std;
-class baseEntity{
+class shareData{
+     private:
+      int id;
+       string name;
+       public:
+        void setId(int i) {
+        id = i;
+    }
+
+    int getId() const {
+        return id;
+    }
+
+    void setName( string n) {
+        name = n;
+    }
+
+    string getName() const {
+        return name;
+    }
+
+};
+class baseEntity : public shareData{
 
   private:
       int age;
-       int id;
-       string name;
        string phonenumber;
        
  public:
@@ -16,23 +36,6 @@ class baseEntity{
 
     int getAge() const {
         return age;
-    }
-
-  
-    void setId(int i) {
-        id = i;
-    }
-
-    int getId() const {
-        return id;
-    }
-
-    void setName(const string& n) {
-        name = n;
-    }
-
-    string getName() const {
-        return name;
     }
 
   
@@ -74,13 +77,43 @@ class Teacher : public baseEntity{
     }
 
 };
+
+class courses :public shareData{
+     private:
+     double hours;
+   int studentId[5];
+     public:
+
+
+   
+    void setHours(double newHours) {
+        hours = newHours;
+    }
+
+  
+    double getHours() const {
+        return hours;
+    }
+
+};
+
 class Student : public baseEntity{
   private:
        double GPA;
        Teacher teacher[6];
-
+        courses course[6];
  public:
-      
+       void setcourses(courses arr[6])
+     {
+        for(int i=0;i<6;i++)
+        {
+            course[i]=arr[i];
+        }
+     }
+      courses* getcourse() 
+     {
+        return course;
+     }
      void setTeacher(Teacher arr[6])
      {
         for(int i=0;i<6;i++)
